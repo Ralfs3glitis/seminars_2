@@ -43,15 +43,24 @@ public class Student {
 	}
 	
 	// bez argumenta konstruktors
-	
-	
-	//konstruktors ar argumentiem
-	public Student(String x, String y) {
-		stID = counter;
-		counter += 1;
-		name = x;
-		surname = y;
+	public Student() {
+		setStID();
+		setName("Testa");
+		setSurname("Students");
 	}
+	
+	// argumenta konstruktors
+	public Student(String x, String y) {
+		setStID();
+		setName(x);
+		setSurname(y);
+	}
+	//tostring func
+	@Override
+	public String toString() {
+		return stID + ": " + name + " " + surname;
+	}
+	
 	
 }
 
