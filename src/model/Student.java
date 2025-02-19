@@ -60,7 +60,7 @@ public class Student {
 	public String toString() {
 		return stID + ": " + name + " " + surname;
 	}
-	
+	//citas funkcijas (ja nepieciesams)
 	
 }
 
