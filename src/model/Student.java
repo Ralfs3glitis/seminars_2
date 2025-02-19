@@ -6,6 +6,8 @@ public class Student {
 	private String name;
 	private String surname;
 	
+	private static long counter = 0;
+	
 	//getters
 	public long getStID() {
 		return stID;
@@ -18,13 +20,13 @@ public class Student {
 	}
 	
 	//setters
-	/*
-	public void setStID(long InputID) {
-		stID = InputID;
+	public void setStID() {
+		//stID = counter;
+		//counter += 1;
+		stID = counter++;
 	}
-	*/
 	public void setName(String InputName) {
-		if(InputName != null){
+		if(InputName != null && InputName.matches("[A-Z]{1}[a-z]{3,10}([ ][A-Z]{1}[a-z]{3,10})?")){
 			name = InputName;
 		}
 		else {
@@ -32,7 +34,7 @@ public class Student {
 		}
 	}
 	public void setSurname(String InputSname) {
-		if(InputSname != null){
+		if(InputSname != null && InputSname.matches("[A-Z]{1}[a-z]{3,10}([ ][A-Z]{1}[a-z]{3,10})?")){
 			surname = InputSname;
 		}
 		else {
@@ -45,7 +47,8 @@ public class Student {
 	
 	//konstruktors ar argumentiem
 	public Student(String x, String y) {
-		stID += 1;
+		stID = counter;
+		counter += 1;
 		name = x;
 		surname = y;
 	}
