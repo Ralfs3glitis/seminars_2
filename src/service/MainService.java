@@ -55,6 +55,8 @@ public class MainService {
 		try {
 			System.out.println("1000. profesors: " + retrieveProfessorById(1000));
 			createProfessor("Karlis", "Immers", Degree.mg);
+			createProfessor("Raita", "Rollande", Degree.dr);
+			createProfessor("Juris", "Zagars", Degree.dr);
 			System.out.println(allProfessors);
 			System.out.println("pirms: " + retrieveProfessorById(1001));
 			updateProfessorById(1001, "Karina", "Krinkele", Degree.dr);
@@ -62,6 +64,7 @@ public class MainService {
 			deleteProfessorById(1000);
 			System.out.println("Pec dzesanas: ");
 			System.out.println(allProfessors);
+			System.out.println("profesori ar doktora gradu: " + filterProfessorByDegree(Degree.dr));
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -140,5 +143,18 @@ public class MainService {
 		Professor foundProfessor = retrieveProfessorById(id);
 		allProfessors.remove(foundProfessor);
 	}
-
+	
+	public static ArrayList<Professor> filterProfessorByDegree(Degree inputDegree) throws Exception{
+		if(inputDegree == null) {
+			throw new Exception("nav pareizi ievadits grads");
+		}
+		ArrayList<Professor> results = new ArrayList<Professor>();
+		for(Professor tempP : allProfessors) {
+			if(tempP.getDegree() == inputDegree) {
+				//add to list
+				results.add(tempP);
+			}
+		}
+		return results;
+	}
 }
