@@ -66,6 +66,9 @@ public class MainService {
 			System.out.println("Pec dzesanas: ");
 			System.out.println(allProfessors);
 			System.out.println("profesori ar doktora gradu: " + filterProfessorByDegree(Degree.dr));
+			
+			
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -81,10 +84,19 @@ public class MainService {
 		
 		Course c3 = new Course("Informācijas sistēmu analīze un projektēšana", 10, p1);
 		//System.out.println(c3);
+		Course c4 = new Course("Operetajsistemas", 7, p3);
+		Course c5 = new Course("Civilā aizsardzība un vides ilgtspēja", 3, p3);
 		
-		allCourses.addAll(Arrays.asList(c1, c2, c3));
+		allCourses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
 		System.out.println(allCourses);
 		
+		try {
+			System.out.println("Pasniedzejs ar id 1002 pasniedz " + CoursesForProfessor(1002).size() + " kursus");
+			System.out.println(CoursesForProfessor(1002));
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		System.out.println("--------ATZIMES---------");
 		
 		Grade g1 = new Grade();
@@ -196,4 +208,19 @@ public class MainService {
 		
 	}
 	
+	public static ArrayList<Course> CoursesForProfessor(int inputID) throws Exception {
+		Professor foundProfessor = retrieveProfessorById(inputID);
+		ArrayList<Course> results = new ArrayList<Course>();
+		
+		for(Course tempC : allCourses) {
+			if(tempC.getProfessor() == foundProfessor) {
+				results.add(tempC);
+			}
+		}
+		if(results.isEmpty()) {
+			throw new Exception("Pasniedzejam nav kursu");
+		}
+		return results;
+		
+	}
 }
