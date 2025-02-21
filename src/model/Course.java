@@ -37,22 +37,27 @@ public class Course {
 		}
 	}
 	public void setCreditPoints(int InputCreditPoints) {
-		if(InputCreditPoints >= 0){
+		if(InputCreditPoints <= 30 && InputCreditPoints > 0){
 			creditPoints = InputCreditPoints;
 		}
 		else {
-			creditPoints = 0;
+			creditPoints = 1;
 		}
 	}
 	public void setProfessor(Professor Inputprof) {
-		professor = Inputprof;
+		if(professor != null) {
+			professor = Inputprof;
+		}
+		else {
+			professor = new Professor();
+		}
 	}
 	
 	// bez argumenta konstruktors
 	public Course() {
 		setCID();
 		setTitle("Testa");
-		setCreditPoints(0);
+		setCreditPoints(1);
 		setProfessor(new Professor());
 	}
 	
