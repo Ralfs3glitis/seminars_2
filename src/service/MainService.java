@@ -79,6 +79,20 @@ public class MainService {
 		
 		allGrades.addAll(Arrays.asList(g1, g2, g3));
 		System.out.println(allGrades);
+		
+	}
+	//CRUD
+	//C-create
+	public static void createProfessor(String name, String surname, Degree degree) throws Exception{
+		//parbaudam vai jau eksistee
+		for(Professor tempP : allProfessors) {
+			if(tempP.getName().equals(name) && tempP.getSurname().equals(surname) && tempP.getDegree().equals(degree)) {
+				throw new Exception("profesors jau eksiste");
+			}
+		}
+		//Professor newProfessor = new Professor(name, surname, degree);
+		//allProfessors.add(newProfessor)
+		allProfessors.add(new Professor(name, surname, degree));
 	}
 
 }
