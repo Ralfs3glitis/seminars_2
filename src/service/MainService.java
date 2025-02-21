@@ -4,6 +4,7 @@ import model.Student;
 import model.Degree;
 import model.Professor;
 import model.Course;
+import model.Grade;
 
 public class MainService {
 
@@ -38,6 +39,17 @@ public class MainService {
 		
 		Course c3 = new Course("Informācijas sistēmu analīze un projektēšana", 10, p1);
 		System.out.println(c3);
+		
+		System.out.println("--------ATZIMES---------");
+		
+		Grade g1 = new Grade();
+		System.out.println(g1);
+		
+		Grade g2 = new Grade(10, st2, c2);
+		System.out.println(g2);
+		
+		Grade g3 = new Grade(8, st3, c3);
+		System.out.println(g3);
 	}
 
 }

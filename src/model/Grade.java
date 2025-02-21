@@ -5,7 +5,7 @@ public class Grade {
 	private int grValue;
 	private Student student;
 	private Course course;
-	private int counter = 0;
+	private static int counter = 1;
 	
 	
 	public long getgID() {
@@ -63,6 +63,7 @@ public class Grade {
 		setStudent(inputStudent);
 		setCourse(inputCourse);
 	}
+	
 	public String toString() {
 		return gID + ": " + grValue + " (" + course.getTitle() + ") -> " + student.getName().charAt(0) + ". " + student.getSurname();
 	}
