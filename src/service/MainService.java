@@ -34,8 +34,9 @@ public class MainService {
 
 		Student st4 = new Student("089089asd9082", "Skirm$ante");
 		//System.out.println(st4); //3: unknown unknown
+		Student st5 = new Student("Blooduh", "Lukass");
 		
-		allStudents.addAll(Arrays.asList(st1, st2, st3, st4));
+		allStudents.addAll(Arrays.asList(st1, st2, st3, st4, st5));
 		
 		System.out.println(allStudents);
 		
@@ -94,10 +95,21 @@ public class MainService {
 		
 		Grade g3 = new Grade(8, st3, c3);
 		//System.out.println(g3);
-		
-		allGrades.addAll(Arrays.asList(g1, g2, g3));
+		Grade g4 = new Grade(2, st3, c3);
+		Grade g5 = new Grade(3, st2, c2);
+		Grade g6 = new Grade(4, st1, c1);
+		Grade g7 = new Grade(6, st4, c3);
+		allGrades.addAll(Arrays.asList(g1, g2, g3, g4, g5, g6, g7));
 		System.out.println(allGrades);
-		
+		try {
+			System.out.println("videja atzime studentam ar id 0: " + StudentAvg(0));
+			System.out.println("videja atzime studentam ar id 1: " + StudentAvg(1));
+			System.out.println("videja atzime studentam ar id 2: " + StudentAvg(2));
+			System.out.println("videja atzime studentam ar id 3: " + StudentAvg(3));
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	//CRUD
 	//C-create
@@ -157,4 +169,31 @@ public class MainService {
 		}
 		return results;
 	}
+	//aprekina videjo ja padot studenta id
+	public static float StudentAvg(int inputID) throws Exception {
+		Student foundStudent = null;
+		float sum = 0;
+		int gradeAmount = 0;
+		if(inputID < 0) {
+			throw new Exception("id nevar but negativs");
+		}
+		
+		for(Student tempS : allStudents) {
+			if(tempS.getStID() == inputID) {
+				foundStudent = tempS;
+			}
+		}
+		for(Grade tempG : allGrades) {
+			if(tempG.getStudent() == foundStudent) {
+				sum += tempG.getGrValue();
+				gradeAmount += 1;
+			}
+		}
+		if(gradeAmount == 0) {
+			throw new Exception("Studentam nav atzimes");
+		}
+		return sum/gradeAmount;
+		
+	}
+	
 }
