@@ -36,7 +36,6 @@ public class MainService {
 		//System.out.println(st4); //3: unknown unknown
 		
 		allStudents.addAll(Arrays.asList(st1, st2, st3, st4));
-		createProfessor("Karlis", "Immers", Degree.mg);
 		
 		System.out.println(allStudents);
 		
@@ -52,7 +51,21 @@ public class MainService {
 		//System.out.println(p3); // 
 		
 		allProfessors.addAll(Arrays.asList(p1, p2, p3));
-		System.out.println(allProfessors);
+		
+		try {
+			System.out.println("1000. profesors: " + retrieveProfessorById(1000));
+			createProfessor("Karlis", "Immers", Degree.mg);
+			System.out.println(allProfessors);
+			System.out.println("pirms: " + retrieveProfessorById(1001));
+			updateProfessorById(1001, "Karina", "Krinkele", Degree.dr);
+			System.out.println("pec: " + retrieveProfessorById(1001));
+			deleteProfessorById(1000);
+			System.out.println("Pec dzesanas: ");
+			System.out.println(allProfessors);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("--------KURSI---------");
 		
@@ -107,6 +120,25 @@ public class MainService {
 			}
 		}
 		throw new Exception("Profesors ar noradito id neeksiste");
+	}
+	//U - update
+	public static void updateProfessorById(int id, String inputName, String inputSurname, Degree inputDegree) throws Exception{
+		Professor foundProfessor = retrieveProfessorById(id);
+		if(inputName != null && !foundProfessor.getName().equals(inputName)) {
+			foundProfessor.setName(inputName);
+		}
+		if(inputSurname != null && !foundProfessor.getSurname().equals(inputSurname)) {
+			foundProfessor.setSurname(inputSurname);
+		}
+		if(inputDegree != null && !foundProfessor.getDegree().equals(inputDegree)) {
+			foundProfessor.setDegree(inputDegree);
+		}
+		
+	}
+	//D - delete
+	public static void deleteProfessorById(int id) throws Exception{
+		Professor foundProfessor = retrieveProfessorById(id);
+		allProfessors.remove(foundProfessor);
 	}
 
 }

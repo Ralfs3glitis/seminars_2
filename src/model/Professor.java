@@ -4,7 +4,7 @@ public class Professor {
 	private String name;
 	private String surname;
 	private Degree degree;
-	private static long counter = 10000;
+	private static long counter = 1000;
 
 	
 	//getters
