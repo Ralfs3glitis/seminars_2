@@ -36,6 +36,8 @@ public class MainService {
 		//System.out.println(st4); //3: unknown unknown
 		
 		allStudents.addAll(Arrays.asList(st1, st2, st3, st4));
+		createProfessor("Karlis", "Immers", Degree.mg);
+		
 		System.out.println(allStudents);
 		
 		System.out.println("--------PROFESORI--------");
@@ -93,6 +95,18 @@ public class MainService {
 		//Professor newProfessor = new Professor(name, surname, degree);
 		//allProfessors.add(newProfessor)
 		allProfessors.add(new Professor(name, surname, degree));
+	}
+	//R - retrieve
+	public static Professor retrieveProfessorById(int id) throws Exception {
+		if(id < 0) {
+			throw new Exception("id nevar but negativs");
+		}
+		for(Professor tempP : allProfessors) {
+			if(tempP.getPID() == id) {
+				return tempP;
+			}
+		}
+		throw new Exception("Profesors ar noradito id neeksiste");
 	}
 
 }

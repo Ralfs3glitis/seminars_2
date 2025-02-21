@@ -8,7 +8,7 @@ public class Professor {
 
 	
 	//getters
-	public long getStID() {
+	public long getPID() {
 		return pID;
 	}
 	public String getName() {
