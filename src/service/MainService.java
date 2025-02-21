@@ -3,6 +3,7 @@ package service;
 import model.Student;
 import model.Degree;
 import model.Professor;
+import model.Course;
 
 public class MainService {
 
@@ -28,6 +29,15 @@ public class MainService {
 		
 		Professor p3 = new Professor("Sirski", "Max!millian", Degree.dr);
 		System.out.println(p3); // 
+		
+		Course c1 = new Course();
+		System.out.println(c1);
+		
+		Course c2 = new Course("JAVA programmesana", 6, p3);
+		System.out.println(c2);
+		
+		Course c3 = new Course("Informācijas sistēmu analīze un projektēšana", 10, p1);
+		System.out.println(c3);
 	}
 
 }

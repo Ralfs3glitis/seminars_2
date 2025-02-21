@@ -29,7 +29,7 @@ public class Course {
 		cID = counter++;
 	}
 	public void setTitle(String InputName) {
-		if(InputName != null && InputName.matches("[A-Z]{1}[a-z]{3,20}([ ][a-z]{3,20})?")){
+		if(InputName != null){
 			title = InputName;
 		}
 		else {
@@ -45,7 +45,7 @@ public class Course {
 		}
 	}
 	public void setProfessor(Professor Inputprof) {
-		if(professor != null) {
+		if(professor == null) {
 			professor = Inputprof;
 		}
 		else {
@@ -71,7 +71,7 @@ public class Course {
 	//tostring func
 	@Override
 	public String toString() {
-		return cID + ": " + title + " - " + creditPoints + "KP " + " pasniedz, " + professor;
+		return cID + ". " + creditPoints + "KP: " + title + " - pasniedz prof. " + professor.getName().charAt(0)+ ". " + professor.getSurname();
 	}
 	//citas funkcijas (ja nepieciesams)
 	
