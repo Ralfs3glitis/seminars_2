@@ -118,6 +118,7 @@ public class MainService {
 			System.out.println("videja atzime studentam ar id 1: " + StudentAvg(1));
 			System.out.println("videja atzime studentam ar id 2: " + StudentAvg(2));
 			System.out.println("videja atzime studentam ar id 3: " + StudentAvg(3));
+			System.out.println(retrieveAllFailedGrades());
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -222,5 +223,15 @@ public class MainService {
 		}
 		return results;
 		
+	}
+	
+	public static ArrayList<Grade> retrieveAllFailedGrades(){
+		ArrayList<Grade> results = new ArrayList<Grade>();
+		for(Grade tempG: allGrades) {
+			if(tempG.getGrValue() <= 2) {
+				results.add(tempG);
+			}
+		}
+		return results;
 	}
 }
